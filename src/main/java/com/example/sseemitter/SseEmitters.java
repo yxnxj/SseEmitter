@@ -25,6 +25,10 @@ public class SseEmitters {
             log.info("onTimeout callback");
             emitter.complete();
         });
+        emitter.onError((throwable) -> {
+            log.info("onError callback");
+            emitter.completeWithError(throwable);
+        });
 
         return emitter;
     }
